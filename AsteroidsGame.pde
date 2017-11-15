@@ -1,6 +1,8 @@
 Spaceship f= new Spaceship();
+Asteroid a= new Asteroid();
+Stars[] nightSky= new Stars[150];
+Asteroid[] space= new Asteroid[20];
 private boolean keyW;
-private boolean keyS;
 private boolean keyA;
 private boolean keyD;
 public void setup() 
@@ -10,6 +12,10 @@ public void setup()
   {
     nightSky[i]= new Stars();
   }
+    for (int ni=0; ni <space.length; ni++)
+  {
+    space[ni]= new Asteroid();
+  }
 }
 public void draw() 
 {
@@ -18,13 +24,19 @@ public void draw()
   {
     nightSky[i].show();
   }
+    for (int ni=0; ni <space.length; ni++)
+  {
+    space[ni].show();
+    space[ni].move();
+  }
   f.show();
   f.move();
- 
+  a.show();
+  a.move();
   {
   if (keyW==true)//accelerate
   {
-    f.accelerate(0.1);
+    f.accelerate(0.05);
   }
   if (keyD==true)//right
   {
