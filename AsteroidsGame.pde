@@ -1,7 +1,6 @@
+ArrayList <Asteroid> space=new ArrayList <Asteroid>();
 Spaceship f= new Spaceship();
-Asteroid a= new Asteroid();
 Stars[] nightSky= new Stars[150];
-Asteroid[] space= new Asteroid[20];
 private boolean keyW;
 private boolean keyA;
 private boolean keyD;
@@ -12,9 +11,9 @@ public void setup()
   {
     nightSky[i]= new Stars();
   }
-    for (int ni=0; ni <space.length; ni++)
+  for (int ni=0; ni <21; ni++)
   {
-    space[ni]= new Asteroid();
+    space.add(new Asteroid());
   }
 }
 public void draw() 
@@ -24,36 +23,39 @@ public void draw()
   {
     nightSky[i].show();
   }
-    for (int ni=0; ni <space.length; ni++)
+  for (int ni=0; ni<space.size(); ni++)
   {
-    space[ni].show();
-    space[ni].move();
+    space.get(ni).show();
+    space.get(ni).move();
   }
   f.show();
   f.move();
-  a.show();
-  a.move();
   {
-  if (keyW==true)//accelerate
-  {
-    f.accelerate(0.05);
+    if (keyW==true)//accelerate
+    {
+      f.accelerate(0.05);
+    }
+    if (keyD==true)//right
+    {
+      f.turn(5);
+    }
+    if (keyA==true)//left
+    {
+      f.turn(-5);
+    }
   }
-  if (keyD==true)//right
+  for (int i=0; i<space.size(); i++)
   {
-    f.turn(5);
-  }
-  if (keyA==true)//left
-  {
-    f.turn(-5);
-  }
+    if (dist(f.getX(), f.getY(), space.get(i).getX(), space.get(i).getY())<20)
+    space.remove(i);
   }
 }
- 
-  public void keyPressed()
+
+public void keyPressed()
 {
   if (key == 'w')//accelerate
   {
-   keyW = true;
+    keyW = true;
   }
   if (key == 'd')//right
   {
@@ -61,9 +63,9 @@ public void draw()
   }
   if (key == 'a')//left
   {
-   keyA = true;
+    keyA = true;
   }
-      if (key== 's')//hyperspace
+  if (key== 's')//hyperspace
   {
     f.setPointDirection((int)(Math.random()*360));
     f.setX((int)(Math.random()*500));
@@ -71,17 +73,19 @@ public void draw()
     f.setDirectionX(0);
     f.setDirectionY(0);
   }
-
 }
 public void keyReleased()
 {
   if (key == 'w')//accelerate
   {
- keyW = false;  }
+    keyW = false;
+  }
   if (key == 'd')//right
   {
- keyD = false;  }
+    keyD = false;
+  }
   if (key == 'a')//left
   {
- keyA = false;  }
+    keyA = false;
+  }
 }
