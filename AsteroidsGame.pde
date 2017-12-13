@@ -9,7 +9,7 @@ private int asteroidFinal;
 private int health = 100;
 public void setup() 
 {
-  size(700, 700);
+  size(500, 500);
   for (int i=0; i <nightSky.length; i++)
   {
     nightSky[i]= new Stars();
@@ -85,15 +85,15 @@ public void draw()
   if (health<20)
   {  
   fill(255);
-  textSize (120);
-  text ("You Lose", 100, 350);
+  textSize (90);
+  text ("You Lose", 50, 250);
   }
   
     if (space.size()<1)
   {  
   fill(255);
-  textSize (120);
-  text ("You Win!", 100, 350);
+  textSize (90);
+  text ("You Win!", 50, 250);
   }
 }
 

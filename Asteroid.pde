@@ -23,8 +23,8 @@ public class Asteroid extends Floater
     myDirectionX = ((Math.random()*2)-1);
     myDirectionY = ((Math.random()*2)-1);
     myPointDirection = (Math.random()*360);
-    setX((int)(Math.random()*700));
-    setY((int)(Math.random()*700));
+    setX((int)(Math.random()*500));
+    setY((int)(Math.random()*500));
   }
   public void move()
   {
